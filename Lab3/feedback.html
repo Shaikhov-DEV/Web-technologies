@@ -1,0 +1,164 @@
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+<head>
+    <link rel="shortcut icon" href="https://cdn-icons-png.flaticon.com/512/21/21601.png" type="image/png">
+  <title>Свяжитесь с нами</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+  <link rel="stylesheet" type="text/css" href="style.css" />
+  <!--[if lte IE 6]><link rel="stylesheet" type="text/css" href="ie.css" /><![endif]-->
+  <script type="text/javascript" src="jquery.js"></script>
+</head>
+
+<body>
+<div id="wrapper">
+  <div  id="header">
+    <ul  class="pages">
+      <li><a href="index.html">Главная</a></li>
+      <li><a href="feedback.html">Контакты</a></li>
+    </ul>
+   
+    <div class="break"></div>
+    <div align="center" class="logo">
+        
+        <a href="#"><img width="100" height="100" src="https://cdn-icons-png.flaticon.com/512/21/21601.png" />
+      <h1>Свежие новости</a></h1>
+      <p>Всегда в теме</p>
+    </div>
+    
+     
+  </div>
+  <br />
+    <div id="content">
+
+      <div class="recent">
+
+        <div class="single">
+          <h2>Свяжитесь с нами</h2>
+          <p>Оставьте нам свое сообщение, и мы с Вами свяжемся.</p>
+        </div>
+
+        <div id="comments">
+          <div id="respond">
+
+            <p>
+              <input type="text" name="author" id="author" value="" size="22" tabindex="1" />
+              <label for="author"><small>Имя *</small></label>
+            </p>
+            <p>
+              <input type="text" name="email" id="email" value="" size="22" tabindex="2" />
+              <label for="email"><small>email *</small></label>
+            </p>
+            <p>
+              <textarea name="comment" id="comment" cols="60" rows="10" tabindex="4"></textarea>
+            </p>
+            <p>
+              <button id="confirm">Отправить отзыв</button>
+            </p>
+
+          </div>
+        </div>
+        <div id="comments">
+          <input id="msgid" type="hidden">
+        </div>
+      </div>
+    </div>
+    <div id="sidebar">
+      <div class="box">
+      <ul class="bookmarks">
+        <li class="twt"><a href="#">Твиттере</a></li>
+        <li class="fcb"><a href="#">ВКонтакте</a></li>
+        </ul>
+    </div>
+
+      <div class="box">
+      <h2>Популярные посты</h2>
+      <ul class="popular">
+        <li> <a href="#">Когда и где будет салют на 9 мая в Уфе?</a>
+          <p>В 00:00 и...</p>
+        </li>
+        <li> <a href="#">Какие улицы перекроют для парада?</a>
+          <p>Проспект Октября с ул.Города...</p>
+        </li>        <li> <a href="#">4 мая 2022г. по Ул. Бабушкика произошло ограбление</a>
+          <p>очевидци утверждают что это было...</p>
+        </li>
+      </ul>
+    </div>
+    <div class="box">
+      <h2>Фотографии города</h2>
+      <div class="flickr"> <a href="#"><img src="images/s1200.jpg" alt="" /></a> </div>
+    </div>
+    <div class="box">
+      <h2>Популярные видео</h2>
+      <div class="video"> <img src="images/_video.jpg" alt="" /> </div>
+    </div>
+      </div>
+    </div>
+  </div>
+</body>
+
+</html>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<script>
+  $(document).ready(function () {
+    $('#msgid').val(0);
+    /* $('#try').on('click',); */
+    load();
+
+    function load() {
+      $.ajax({
+        type: 'POST',
+        url: 'loadMessageData.php',
+        dataType: "json",
+        /*data:{tek:tek, kol:kol},*/
+        success: function (data) {
+          if (data.length > parseInt($('#msgid').val())) {
+            for (var i = parseInt($('#msgid').val()); i < data.length; i++) {
+              $('#comments').append('<div class="msg"><h2>' + data[i].name + '</h2><a><div>' + data[i].email +
+                '</div></a><p>' + data[i].msg + '</p><div class="break"></div></div>');
+            }
+            $('#msgid').val(data.length);
+          }
+        }
+      });
+    };
+
+    $('#confirm').on('click', function () {
+      var checker = true;
+      var name = $('#author').val();
+      var email = $('#email').val();
+      var msg = $('#comment').val();
+      if ($('#author').val() == '' || $('#author').val().length < 4) {
+        checker = false;
+      }
+      if ($('#email').val() == '' || $('#email').val().length < 5 || !$('#email').val().includes("@")) {
+        checker = false;
+      }
+      if ($('#comment').val() == '' || $('#comment').val().length < 5) {
+        checker = false;
+      }
+      if (checker == true) {
+        $.ajax({
+          type: 'POST',
+          url: 'saveMessage.php',
+          data: {
+            name: name,
+            email: email,
+            msg: msg
+          },
+          success: function () {
+            load()
+            $('#author').val('')
+            $('#email').val('')
+            $('#comment').val('')
+            alert("Отзыв добавлен!");
+          }
+
+        });
+      } else {
+        alert("Отзыв не отправлен, проверьте правильность ввода полей!");
+      }
+    });
+  });
+</script>

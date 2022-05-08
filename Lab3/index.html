@@ -1,0 +1,91 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <link rel="shortcut icon" href="https://cdn-icons-png.flaticon.com/512/21/21601.png" type="image/png">
+<title>Новости цвета детской неожиданности</title>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<link rel="stylesheet" type="text/css" href="style.css" />
+<script type="text/javascript" src="js/jquery-1.3.2.min.js"></script>
+<script type="text/javascript" src="js/jquery.cycle.all.min.js"></script>
+<script type="text/javascript" src="js/script.js"></script>
+</head>
+<body>
+<div id="wrapper">
+  <div  id="header">
+    <ul  class="pages">
+      <li><a href="index.html">Главная</a></li>
+      <li><a href="feedback.html">Контакты</a></li>
+    </ul>
+   
+    <div class="break"></div>
+    <div align="center" class="logo">
+        
+        <a href="#"><img width="100" height="100" src="https://cdn-icons-png.flaticon.com/512/21/21601.png" />
+      <h1>Свежие новости</a></h1>
+      <p>Всегда в теме</p>
+    </div>
+    
+     
+  </div>
+  <br />
+  <div id="content">
+    <div class="recent">
+    </div>
+		<input type="button" id="getUser" value="Показать еще"/>
+  </div>
+  <div id="sidebar">
+    <div class="box">
+      <ul class="bookmarks">
+        <li class="twt"><a href="#">Твиттере</a></li>
+        <li class="fcb"><a href="#">ВКонтакте</a></li>
+        </ul>
+    </div>
+    <div class="box">
+      <h2>Популярные посты</h2>
+      <ul class="popular">
+        <li> <a href="#">Когда и где будет салют на 9 мая в Уфе?</a>
+          <p>В 00:00 и...</p>
+        </li>
+        <li> <a href="#">Какие улицы перекроют для парада?</a>
+          <p>Проспект Октября с ул.Города...</p>
+        </li>        <li> <a href="#">4 мая 2022г. по Ул. Бабушкика произошло ограбление</a>
+          <p>очевидци утверждают что это было...</p>
+        </li>
+      </ul>
+    </div>
+    <div class="box">
+      <h2>Фотографии города</h2>
+      <div class="flickr"> <a href="#"><img src="images/s1200.jpg" alt="" /></a> </div>
+    </div>
+    <div class="box">
+      <h2>Популярные видео</h2>
+      <div class="video"> <img src="images/_video.jpg" alt="" /> </div>
+    </div>
+  </div>
+</div>
+</body>
+</html>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<script>
+$(document).ready(function(){
+    $('#getUser').on('click',function(){
+		var tek = $('.post').length+1;
+		var kol = 5;
+        $.ajax({
+            type:'POST',
+            url:'getData.php',
+            dataType: "json",
+            data:{tek:tek, kol:kol},
+            success:function(data){
+			    for (var i=0;i<5;i++){
+					$('.recent').append('<div class="post"> <a href="#"><img src="'+data[i].imagesource+
+						'" width="100" height="100" alt="" /></a><h2><a href="#">'+data[i].headline+
+						'</a></h2><p>'+data[i].maintext+
+						'</p><p class="readmore">[ <a href="#">Узнать больше</a> ]</p><div class="break"></div></div>');
+			    }
+            }
+        });
+    });
+	$('#getUser').click();
+});
+</script>
