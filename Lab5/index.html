@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+    
+<head>
+    <meta charset="UTF-8">
+    <title>Крестики-нолики</title>
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+    <script type="text/javascript" src="http://yastatic.net/es5-shims/0.0.2/es5-shims.min.js" charset="utf-8"></script>
+    <script type="text/javascript" src="http://yastatic.net/share2/share.js" charset="utf-8"></script>
+    <script src="script.js" type="text/javascript"></script>
+    <link href="style.css" type="text/css" rel="stylesheet" />
+</head>
+<body>
+<div align="center" id="game-krestiki-noliki">
+    <div class="game">
+        <div align="center" class="score">
+        <table align="center" width="100%" cellspacing="1" cellpadding="1" border="0">
+            <caption><h2  style="border: 2px solid black; padding: 20px 20px 20px 20px; float: left; text-align: left; vertical-align:top; ">Счёт</h2><br><a style="text-decoration: none; padding: 0 5px 0 5px;  color: black; border: 2px solid black; float: right; text-align: right; vertical-align: middle;" href="#" class="next"><h2>Начать заново</h2></a></caption>
+            <tr>
+                 <th  width="50%" align="right">Победы:</th>
+                 <td  width="50%" align="left" id="countW"></td>
+            </tr>
+            <tr> 
+		        <th  align="right">Поражения:</th>
+                <td  align="left" id="countL"></td>
+		    </tr>
+		</table></div>
+		
+        <br><br><br>
+        <a href="#" class="item"></a><a href="#" class="item"></a><a href="#" class="item"></a><a href="#" class="item"></a><a href="#" class="item"></a><a href="#" class="item"></a><a href="#" class="item"></a><a href="#" class="item"></a><a href="#" class="item"></a>
+        
+    </div>
+        <div class="win">
+         <h2>Вы выиграли!</h2>
+         <div class="intro">
+            <a href="#" class="next">Еще</a>
+           <a href="#" class="close">х</a>
+         </div>
+        </div>
+        <div class="lost">
+         <h2>Выиграл компьютер</h2>
+            <div class="intro">
+           <a href="#" class="next">Попробовать еще?</a>       
+           <a href="#" class="close">х</a>
+            </div>
+        </div>
+   
+</div>
+</body>
+</html>
