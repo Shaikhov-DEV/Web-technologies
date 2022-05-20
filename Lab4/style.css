@@ -1,0 +1,146 @@
+body{
+	margin: 0;
+	font-family: sans-serif;
+	font-size: 12px;
+    background: url("https://million-wallpapers.ru/wallpapers/3/32/424395951325384/beskrajnee-nebo-kak-beskonechnyj-okean.jpg");
+	color: #79553D;
+}
+.ar {
+    vertical-align: middle;
+    padding: 20px;
+    float:right;
+    font-size: 36px;
+    color: #FF0000;
+   }
+   .al {
+    vertical-align: middle;
+    padding: 5px;
+    float:left;
+   }
+   a {
+    padding: 20px;
+    text-decoration: none; /* Убираем подчёркивание */
+   }
+   kr {
+    font-size: 42px;
+    color: #FF0000;
+   }
+.ac {
+    margin: 10%;
+    font-size: 42px;
+    text-align: center;
+    color: #000;
+	text-shadow: 0px 4px 4px #79553D;
+   }
+.head{
+    height: 170px;
+	color: #79553D;
+	background: url("https://million-wallpapers.ru/wallpapers/3/32/424395951325384/beskrajnee-nebo-kak-beskonechnyj-okean.jpg");
+}
+
+.stage{
+	width: 100%;
+}
+
+#acc_con{
+	margin: 10%;
+	width: 80%;
+}
+
+.picture{
+	float:left;
+	margin: 7px 7px 0 0;
+}
+
+.content_box{
+	box-sizing: border-box;
+	min-height: 100%;
+	max-width: 90%;
+	padding: 20px 20px 20px 20px;
+	margin:  20px 20px 20px 20px;
+	position: relative;
+}
+
+.main_title{
+	font-size: 24px;
+	text-shadow: 0px 1px 1px #79553D;
+	margin-left: 10%;
+	width: 80%;
+	color: #79553D;
+	box-shadow: 0px 4px 4px #79553D;
+	padding: 0 1rem;
+	height: 50px;
+	text-align: center;
+	background-color: white;
+	border-radius: 10px
+}
+
+.btn{
+    margin-left: 10%;
+	cursor: pointer;
+	height: 50px;
+	background-color: silver;
+	border: 1px solid white;
+	padding: 0 1rem;
+	box-shadow: 0px 4px 4px #79553D;
+	width: 80%;
+	text-align: center;
+}
+.btns{
+	cursor: pointer;
+	height: 50px;
+	background-color: white;
+	line-height: 50px;
+	border: 1px solid white;
+	padding: 0 1rem;
+	box-shadow: 0px 4px 4px #79553D;
+	width: 10%;
+	text-align: right;
+}
+#tip{
+	cursor: pointer;
+}
+
+.btn_s{
+	background-color: white;
+	color: white;
+	line-height: 50px;
+	border: 1px solid white;
+	padding: 0 1rem;
+	box-shadow: 0px 4px 4px #79553D;
+	width: 10%;
+	text-align: right;
+}
+.text-field__input{
+
+  font-size: 18px;
+  text-align: center;
+  height: 30;
+  width: 60; 
+  border: 3px solid black;
+  border-radius: 7px;
+}
+.text-field__input::placeholder {
+  color: #212529;
+  opacity: 0.4;
+  
+}
+.form-inline{ 
+    position	: absolute;
+    top: 50%;
+    left: 10%;
+    right:10%;
+	width: 80%;
+    background-color: black;
+    opacity: 0.8;
+    height: 60px;
+    padding: 20px 10px;
+    border: 0px solid white;
+  border-radius: 7px;
+}
+.im {
+    position	: relative;
+    width		: 100%;
+    height: 510px;
+
+}
